@@ -1,0 +1,14 @@
+<form class="{{cssClass}} bg" autocomplete="off">
+  <div class="arma_caja">
+    <header class="sheet-header arma_attrib">
+        <img class="BOLprofile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input class="attrib2" name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}"/></h1>
+    </header>
+        <div class="flexcol flexcenter arma_caja">
+    <label class="arma_attrib attrib_name">DESCRIPCIÓN</label>
+    <div class="flexcol flexcenter arma_caja cajacent">
+      {{editor content=data.data.descripcion target="data.descripcion" button=true owner=owner editable=true}}
+   </div>
+   </div>
+   </div>
+</form>

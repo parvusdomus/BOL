@@ -1,0 +1,22 @@
+{
+  "name": "BOL",
+  "title": "Bárbaros de Lemuria (No Oficial)",
+  "description": "Sistema no oficial para jugar Bárbaros de Lemuria",
+  "version": "0.0.2",
+  "templateVersion": 2,
+  "author": "Parvus Domus",
+  "minimumCoreVersion": "0.8.9",
+  "compatibleCoreVersion": "0.8.9",
+  "scripts": [],
+  "esmodules": ["BOL.js"],
+  "styles": ["styles/css/bol.css"],
+  "packs": [],
+  "languages": [],
+  "socket": false,
+  "initiative": "2d6 + @mente + @iniciativa + @inimod",
+  "gridDistance": 1,
+  "gridUnits": "m",
+  "url": "",
+  "manifest": "",
+  "download": ""
+}

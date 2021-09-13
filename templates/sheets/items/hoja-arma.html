@@ -1,0 +1,55 @@
+<form class="{{cssClass}} bg" autocomplete="off">
+  <div class="arma_caja">
+    <header class="sheet-header arma_attrib">
+        <img class="BOLprofile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input class="attrib2" name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}"/></h1>
+    </header>
+    <div class="flexrow arma_caja">
+      <div class="flexcol flexcenter arma_attrib">
+         <label class="arma_attrib attrib_name">TIPO</label>
+         <select name="data.tipo" data-dtype="String">
+            {{#select data.data.tipo}}
+               <option value="CaC">CaC</option>
+               <option value="Dist">Dist</option>
+            {{/select}}
+         </select>
+      </div>
+      <div class="flexcol flexcenter arma_attrib">
+         <label class="arma_attrib attrib_name">DAÑO</label>
+         <select name="data.dano" data-dtype="String">
+            {{#select data.data.dano}}
+               <option value="1">1</option>
+               <option value="1D3">1D3</option>
+               <option value="1D6B">1D6B</option>
+               <option value="1D6">1D6</option>
+               <option value="1D6A">1D6A</option>
+            {{/select}}
+         </select>
+      </div>
+      <div class="flexcol flexcenter arma_attrib">
+         <label class="arma_attrib attrib_name">BONO</label>
+         <select name="data.bono" data-dtype="String">
+            {{#select data.data.bono}}
+               <option value="FUE">Fuerza</option>
+               <option value="MITAD">Fuerza/2</option>
+            {{/select}}
+         </select>
+      </div>
+      <div class="flexcol flexcenter arma_attrib">
+         <label class="arma_attrib attrib_name">DIST</label>
+         <input class="arma_attrib attrib2" type="text" name="data.incDistancia" value="{{data.data.incDistancia}}" data-dtype="Number" maxlength="2"/>
+      </div>
+      <div class="flexcol flexcenter arma_attrib">
+        <label class="arma_attrib attrib_name">NOTAS</label>
+        <input class="arma_attrib attrib2" type="text" name="data.notas" value="{{data.data.notas}}" data-dtype="String"/>
+      </div>
+    </div>
+
+    <div class="flexcol flexcenter arma_caja">
+      <label class="arma_attrib attrib_name">DESCRIPCIÓN</label>
+      <div class="flexcol flexcenter arma_caja cajacent">
+      {{editor content=data.data.descripcion target="data.descripcion" button=true owner=owner editable=true}}
+      </div>
+    </div>
+    </div>
+</form>

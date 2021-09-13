@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css?family=Acme');
+
+.bg {
+  background-image: url("../../assets/bg3.webp");
+  background-size: cover;
+  margin: -8px;
+}
+
+.BOLprofile-img {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  height: 150px;
+  width: 150px;
+  margin-right: 10px;
+  background-color: grey;
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+  border-radius: 3px;
+}
+
+.classimage {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  height: 90px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
+.classlogo {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100px;
+  flex: 0 0 100px;
+  height: 10px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
+select{
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+  width: 100%;
+  text-align-last:center;
+}
+
+div.cajaiz{
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+  border-right: 0;
+}
+
+div.cajacent{
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+}
+div.cajader{
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+  border-left: 0;
+}
+div.cajaiznotop{
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+  border-right: 0;
+  border-top: 0;
+}
+div.cajacentnotop{
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+  border-top: 0;
+}
+div.cajadernotop{
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+  border-left: 0;
+  border-top: 0;
+}
+
+
+
+label.arma_attrib { color: black; margin: auto}
+
+div.arma_attrib {
+  font-family: "Acme";
+  padding: 5px;
+}
+.arma_attrib select {
+  font-family: "Acme";
+  margin: auto;
+}
+.arma_attrib input {
+  font-family: "Acme";
+  margin: auto;
+}
+div.arma_caja {
+  padding: 5px;
+}
+
+input.attrib {
+  font-family: "Acme";
+  text-align: center;
+  font-size: 200%;
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+}
+
+input.attrib2 {
+  font-family: "Acme";
+  text-align: center;
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+}
+
+select.attrib2 {
+  font-family: "Acme";
+  text-align: center;
+  border-style: solid;
+  border-color: #4A2708;
+  border-width: 2px;
+}
+
+select.attrib_name {
+  font-family: "Acme";
+  text-align: center;
+  font-weight: bold;
+  vertical-align: sub;
+}
+
+
+input.attrib_max {
+  font-family: "Acme";
+  text-align: center;
+  font-size: 200%;
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+}
+
+.attrib_name {
+  font-family: "Acme";
+  text-align: center;
+  font-size: 110%;
+  font-weight: bold;
+  vertical-align: sub;
+}
+.caract_name {
+  font-family: "Acme";
+  text-align: left;
+  float:left;
+  font-weight: bold;
+}
+input.caract_name {
+  font-family: "Acme";
+  text-align: left;
+  display:inline;
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+}
+table.caract_name {
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
+  font-weight: bold;
+}
+
+table.charsheet_cosas {
+  width: 100%;
+  border: none;
+  text-align: left;
+}
+
+th.align_right {
+  border: none;
+  padding: 5px;
+  text-align: right;
+}
+
+tr.color {
+  background-color: #4A2708;
+}
+
+td.align_right {
+  border: none;
+  padding: 5px;
+  text-align: right;
+}
+
+th.align_center {
+  border: none;
+  padding: 5px;
+  text-align: center;
+}
+
+td.align_center {
+  border: none;
+  padding: 5px;
+  text-align: center;
+}
+
+div.caract_caja {
+  padding: 5px;
+  width: 100%;
+}
+.attrib_cat {
+  font-family: "Acme";
+  text-align: center;
+  font-size: 140%;
+}
+.editor {
+    height: 100px;
+}
+
+.tox {
+    height:100px !important;
+    display:block;
+}
+
+}
+.tox-tinymce {
+    height:100px !important;
+    display:block;
+}
+.tox .tox-editor-container {
+    background: #fff;
+}
+.tox .tox-edit-area {
+    padding: 0 8px;
+    position: inherit;
+    min-height: 20px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-image: url("../../assets/bg3.webp");
+  color: black;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  border-style: groove;
+  border-color: #4A2708;
+  border-width: 2px;
+
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.scroller {
+  width: 300px;
+  height: 100px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+}
+
+.tooltip .tooltipdescripcion {
+  width: 250px;
+  left: 205%;
+}
+
+.tooltip .tooltipderecho {
+  left: -200%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.clickable:hover, .clickable:focus {
+  color: #000;
+  text-shadow: 0 0 10px red;
+  cursor: pointer;
+}

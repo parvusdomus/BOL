@@ -1,0 +1,357 @@
+<form class="actor-sheet {{cssClass}} bg" autocomplete="off">
+    <header>
+      <div class="flexrow arma_caja">
+        <div class="flexcol arma_caja">
+          <div class="flexrow">
+            <img class="BOLprofile-img" src="{{img}}" data-edit="img" title="{{name}}"/>
+            <div class="flexcol">
+              <h1><input class="attrib2" name="name" type="text" value="{{name}}" placeholder="{{ localize 'Name' }}"/></h1>
+              <img class="classimage" src="/systems/BOL/assets/maton.webp" data-edit="img" title="HEROE"/>
+            </div>
+          </div>
+          <div class="flexcol arma_caja">
+            <table class="caract_name">
+            <tr>
+              <td><label class="attrib_name">ORIGEN: </label></td>
+              <td><input type="text" class="caract_name" name="data.origen" value="{{data.origen}}" data-dtype="String"/></td>
+            </tr>
+            <tr>
+              <td><label class="attrib_name">RAZA: </label></td>
+              <td><input type="text" class="caract_name" name="data.raza" value="{{data.raza}}" data-dtype="String"/></td>
+            </tr>
+            <tr>
+              <td><label class="attrib_name">GÉNERO: </label></td>
+              <td><input type="text" class="caract_name" name="data.genero" value="{{data.genero}}" data-dtype="String"/></td>
+            </tr>
+            </table>
+          </div>
+        </div>
+        <div class="flexcol arma_caja cajacent">
+
+          <div class="flexrow arma_caja">
+            <div class="flexcol">
+              <input class="attrib" type="text" name="data.pProgreso.value" value="{{data.pProgreso.value}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">P.P.</label>
+              <input class="attrib_max" type="text" name="data.pProgreso.max" value="{{data.pProgreso.max}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">MAX</label>
+            </div>
+            <div class="flexcol">
+              <input class="attrib" type="text" name="data.vitalidad.value" value="{{data.vitalidad.value}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">P.V.</label>
+              <input class="attrib_max" type="text" name="data.vitalidad.max" value="{{data.vitalidad.max}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">MAX</label>
+            </div>
+            <div class="flexcol">
+              <input class="attrib" type="text" name="data.pHeroe.value" value="{{data.pHeroe.value}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">P.H.</label>
+              <input class="attrib_max" type="text" name="data.pHeroe.max" value="{{data.pHeroe.max}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">MAX</label>
+            </div>
+            <div class="flexcol">
+              <input class="attrib" type="text" name="data.pArcano.value" value="{{data.pArcano.value}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">P.A.</label>
+              <input class="attrib_max" type="text" name="data.pArcano.max" value="{{data.pArcano.max}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">MAX</label>
+            </div>
+            <div class="flexcol">
+              <input class="attrib" type="text" name="data.pFe.value" value="{{data.pFe.value}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">P.F.</label>
+              <input class="attrib_max" type="text" name="data.pFe.max" value="{{data.pFe.max}}" data-dtype="Number" maxlength="2"/>
+              <label class="attrib_name">MAX</label>
+            </div>
+          </div>
+
+          <div class="flexrow arma_caja cajacent">
+                 <div class="flexcol">
+                    <label class="attrib_name tiradaAtributo clickable" data-valor="{{data.fuerza}}" data-label="FUERZA">FUERZA</label>
+                    <input class="attrib" type="text" name="data.fuerza" value="{{data.fuerza}}" data-dtype="Number" maxlength="2"/>
+                 </div>
+                 <div class="flexcol">
+                   <label class="attrib_name tiradaAtributo clickable" data-valor="{{data.agilidad}}" data-label="AGILIDAD">AGILIDAD</label>
+                   <input class="attrib" type="text" name="data.agilidad" value="{{data.agilidad}}" data-dtype="Number" maxlength="2"/>
+                 </div>
+                 <div class="flexcol">
+                   <label class="attrib_name tiradaAtributo clickable" data-valor="{{data.mente}}" data-label="MENTE">MENTE</label>
+                   <input class="attrib" type="text" name="data.mente" value="{{data.mente}}" data-dtype="Number" maxlength="2"/>
+                 </div>
+                 <div class="flexcol">
+                   <label class="attrib_name tiradaAtributo clickable" data-valor="{{data.atractivo}}" data-label="ATRACTIVO">ATRACTIVO</label>
+                   <input class="attrib" type="text" name="data.atractivo" value="{{data.atractivo}}" data-dtype="Number" maxlength="2"/>
+                 </div>
+               </div>
+            <div class="flexrow arma_caja cajacentnotop">
+              <div class="flexcol">
+                <label class="attrib_name tiradaAtaqueAtributo clickable" data-valor1="{{data.iniciativa}}" data-label1="INICIATIVA" data-valor2="{{data.mente}}" data-label2="MENTE">INICIATIVA</label>
+                <input class="attrib" type="text" name="data.iniciativa" value="{{data.iniciativa}}" data-dtype="Number" maxlength="2"/>
+              </div>
+              <div class="flexcol">
+                <label class="attrib_name tiradaAtaqueAtributo clickable" data-valor1="{{data.CaC}}" data-label1="C a C." data-valor2="{{data.fuerza}}" data-label2="FUERZA">C a C.</label>
+                <input class="attrib" type="text" name="data.CaC" value="{{data.CaC}}" data-dtype="Number" maxlength="2"/>
+              </div>
+              <div class="flexcol">
+                <label class="attrib_name tiradaAtaqueAtributo clickable" data-valor1="{{data.distancia}}" data-label1="DISTANCIA" data-valor2="{{data.agilidad}}" data-label2="AGILIDAD">DISTANCIA</label>
+                <input class="attrib" type="text" name="data.distancia" value="{{data.distancia}}" data-dtype="Number" maxlength="2"/>
+              </div>
+              <div class="flexcol">
+                <label class="attrib_name">DEFENSA</label>
+                <input class="attrib" type="text" name="data.defensa" value="{{data.defensa}}" data-dtype="Number" maxlength="2"/>
+              </div>
+            </div>
+
+      </div>
+      </div>
+  </header>
+    <div class="flexrow arma_caja">
+
+    </div>
+    <div class="flexrow arma_caja">
+      <!-- <div class="flexcol"> -->
+      <div class="cajaiz">
+        <table class="charsheet_cosas">
+             <tr>
+               <th></th>
+               <th><label class="attrib_name">OFICIO</label></th>
+               <th class="align_center"><label class="attrib_name">NIVEL</label></th>
+               <th></th>
+               <th class="align_right"><a class="item-control item-create tooltip" data-type="oficio"><i class="fas fa-plus"><span class="tooltiptext">Crear Oficio</span></i></a></th>
+             </tr>
+         {{#each Oficios as |item id|}}
+            <tr class="item" data-item-id="{{item._id}}">
+              <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+                <div class="tooltiptext tooltipdescripcion">{{item.name}}{{{item.data.descripcion}}}</div>
+              </td>
+                <td>{{item.name}}</td>
+                <td class="align_center">{{item.data.nivel}}</td>
+                <td></td>
+              <td class="align_right">
+                <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext">Editar Oficio</span></i></a>
+                <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext">Borrar Oficio</span></i></a>
+              </td>
+
+             </tr>
+         {{/each}}
+         </table>
+         </div>
+       <div class="cajacent">
+        <table class="charsheet_cosas">
+          <tr>
+            <th></th>
+            <th><label class="attrib_name">VENTAJAS</label></th>
+            <th></th>
+            <th class="align_right"><a class="item-control item-create tooltip" data-type="ventaja"><i class="fas fa-plus"><span class="tooltiptext">Crear Ventaja</span></i></a></th>
+          </tr>
+          {{#each Ventajas as |item id|}}
+            <tr class="item" data-item-id="{{item._id}}">
+              <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+                <div class="tooltiptext tooltipdescripcion">{{item.name}}{{{item.data.descripcion}}}</div>
+              </td>
+              <td>{{item.name}}</td>
+              <td></td>
+              <td class="align_right">
+                <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext">Editar Ventaja</span></i></a>
+                <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext">Borrar Ventaja</span></i></a>
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+        </div>
+        <div class="cajader">
+        <table class="charsheet_cosas">
+          <tr>
+            <th></th>
+            <th><label class="attrib_name">DESVENTAJAS</label></th>
+            <th></th>
+            <th class="align_right"><a class="item-control item-create tooltip" data-type="desventaja"><i class="fas fa-plus"><span class="tooltiptext tooltipderecho">Crear Desventaja</span></i></a></th>
+          </tr>
+          {{#each Desventajas as |item id|}}
+            <tr class="item" data-item-id="{{item._id}}">
+              <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+                <div class="tooltiptext tooltipdescripcion">{{item.name}}{{{item.data.descripcion}}}</div>
+              </td>
+              <td>{{item.name}}</td>
+              <td></td>
+              <td class="align_right">
+                <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext tooltipderecho">Editar Desventaja</span></i></a>
+                <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext tooltipderecho">Borrar Desventaja</span></i></a>
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+        </div>
+    </div>
+    <div class="flexcol arma_caja">
+      <!-- <label class="attrib_cat">ARMAMENTO</label> -->
+      <div class="cajacent">
+      <table class="charsheet_cosas ">
+        <tr>
+          <th></th>
+          <th><label class="attrib_name">ARMA</label></th>
+          <th class="align_center"><label class="attrib_name">TIPO</label></th>
+          <th class="align_center"><label class="attrib_name">DAÑO</label></th>
+          <th class="align_center"><label class="attrib_name">BONO</label></th>
+          <th class="align_center"><label class="attrib_name">DISTANCIA</label></th>
+          <th><label class="attrib_name">NOTAS</label></th>
+          <th class="align_right"><a class="item-control item-create tooltip" data-type="arma"><i class="fas fa-plus"><span class="tooltiptext tooltipderecho">Crear Arma</span></i></a></th>
+        </tr>
+        {{#each Armas as |item id|}}
+          <tr class="item" data-item-id="{{item._id}}">
+            <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+              <div class="tooltiptext tooltipdescripcion">{{item.name}}<img src="{{item.img}}"/>{{{item.data.descripcion}}}</div>
+            </td>
+            <td class="tiradaAtaqueArma clickable" data-tipoarma="{{data.tipo}}" data-nombrearma="{{name}}"><label>{{item.name}}</label></td>
+            <td class="align_center">
+              {{#if (eq item.data.tipo "CaC")}}<i class="fas fa-user-friends tooltip"><span class="tooltiptext">Arma Cuerpo a Cuerpo</span></i>{{/if}}
+              {{#if (eq item.data.tipo "Dist")}}<i class="fas fa-people-arrows tooltip"><span class="tooltiptext">Arma a Distancia</span></i>{{/if}}
+            </td>
+            <td class="align_center tiradaDanoArma clickable" data-nombrearma="{{name}}" data-danoarma="{{data.dano}}" data-bonodanoarma="{{item.data.bono}}">
+              {{#if (eq item.data.dano "1")}}1{{/if}}
+              {{#if (eq item.data.dano "1D3")}}<i class="fas fa-dice-three tooltip" style="color:grey"><span class="tooltiptext">Daño: 1D3</span></i>{{/if}}
+              {{#if (eq item.data.dano "1D6B")}}<i class="fas fa-dice-six tooltip" style="color:grey"><i class="fas fa-dice-six" style="color:grey"><span class="tooltiptext">Daño: 1D6B</span></i></i>{{/if}}
+              {{#if (eq item.data.dano "1D6")}}<i class="fas fa-dice-six tooltip"><span class="tooltiptext">Daño: 1D6</span></i>{{/if}}
+              {{#if (eq item.data.dano "1D6A")}}<i class="fas fa-dice-six tooltip"><i class="fas fa-dice-six"><span class="tooltiptext">Daño: 1D6A</span></i></i>{{/if}}
+            </td>
+
+            <td class="align_center">
+              {{#if (eq item.data.bono "FUE")}}<i class="fas fa-fist-raised tooltip"><span class="tooltiptext">Fuerza</span><i class="fas fa-fist-raised"></i></i>{{/if}}
+              {{#if (eq item.data.bono "MITAD")}}<i class="fas fa-fist-raised tooltip" style="color:grey"><span class="tooltiptext">Mitad de Fuerza (redondeado hacia abajo)</span></i>{{/if}}
+            </td>
+            <td class="align_center">{{item.data.incDistancia}}</td>
+            <td>{{item.data.notas}}</td>
+            <td class="align_right">
+              <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext tooltipderecho">Editar Arma</span></i></a>
+              <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext tooltipderecho">Borrar Arma</span></i></a>
+            </td>
+          </tr>
+        {{/each}}
+      </table>
+      </div>
+      <div div class="flexrow">
+        <div div class="cajaiznotop">
+      <table class="charsheet_cosas">
+        <tr>
+          <th></th>
+          <th><label class="attrib_name">ARMADURA</label></th>
+          <th class="align_center"><label class="attrib_name">PROT</label></th>
+          <th class="align_center"><label class="attrib_name">PEN</label></th>
+          <th class="align_center"><label class="attrib_name">CM</label></th>
+          <th  class="align_right"><a class="item-control item-create tooltip" data-type="armadura"><i class="fas fa-plus"><span class="tooltiptext">Crear Armadura</span></i></a></th>
+        </tr>
+        {{#each Armaduras as |item id|}}
+          <tr class="item" data-item-id="{{item._id}}">
+            <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+              <div class="tooltiptext tooltipdescripcion">{{item.name}}<img src="{{item.img}}"/>{{{item.data.descripcion}}}</div>
+            </td>
+            <td class="tiradaArmadura clickable" data-nombrearmadura="{{name}}" data-proteccion="{{data.proteccion}}">{{item.name}}</td>
+            <td class="align_center">{{item.data.proteccion}}</td>
+            <td class="align_center">
+              {{#if (eq item.data.penalizadores "Ninguno")}}<i class="fas fa-times tooltip" style="color:grey"><span class="tooltiptext">Sin penalizadores.</span></i>{{/if}}
+              {{#if (eq item.data.penalizadores "Social")}}<i class="fas fa-comments tooltip"><span class="tooltiptext">Social si no se esconde.</span></i>{{/if}}
+              {{#if (eq item.data.penalizadores "Soc1Agil")}}<i class="fas fa-comments tooltip"><i class="fas fa-running tooltip" style="color:grey"><span class="tooltiptext">Social y -1 a Agilidad.</span></i></i>{{/if}}
+              {{#if (eq item.data.penalizadores "Soc2Agil")}}<i class="fas fa-comments tooltip"><i class="fas fa-running tooltip"><span class="tooltiptext">Social y -2 a Agilidad.</span></i></i>{{/if}}
+              {{#if (eq item.data.penalizadores "Soc1Ini")}}<i class="fas fa-comments tooltip"><i class="fas fa-list-ol tooltip style="color:grey""><span class="tooltiptext">Social y -1 a Iniciativa.</span></i></i>{{/if}}
+              {{#if (eq item.data.penalizadores "1Agil")}}<i class="fas fa-running tooltip" style="color:grey"><span class="tooltiptext">-1 a Agilidad.</span></i>{{/if}}
+              </td>
+            <td class="align_center">{{item.data.costeMagico}}</td>
+            <td class="align_right">
+              <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext">Editar Armadura</span></i></a>
+              <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext">Borrar Armadura</span></i></a>
+            </td>
+          </tr>
+        {{/each}}
+      </table>
+      </div>
+      <div div class="cajacentnotop">
+      <table class="charsheet_cosas">
+        <tr>
+          <th></th>
+          <th><label class="attrib_name">ESCUDO</label></th>
+          <th class="align_center"><label class="attrib_name">PEN</label></th>
+          <th class="align_center"><label class="attrib_name">P.AT</label></th>
+          <th class="align_center"><label class="attrib_name">N.AT</label></th>
+          <th class="align_center"><label class="attrib_name">CM</label></th>
+          <th class="align_right"><a class="item-control item-create tooltip" data-type="escudo"><i class="fas fa-plus"><span class="tooltiptext tooltipderecho">Crear Escudo</span></i></a></th>
+        </tr>
+        {{#each Escudos as |item id|}}
+          <tr class="item" data-item-id="{{item._id}}">
+            <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+              <div class="tooltiptext tooltipdescripcion">{{item.name}}<img src="{{item.img}}"/>{{{item.data.descripcion}}}</div>
+            </td>
+            <td>{{item.name}}</td>
+            <td class="align_center">{{item.data.penalizadores}}</td>
+            <td class="align_center">{{item.data.pAtaque}}</td>
+            <td class="align_center">
+              {{#if (eq item.data.nAtaques "Uno")}}<i class="fas fa-shield-alt tooltip" style="color:grey"><span class="tooltiptext">Un Ataque por Turno.</span></i>{{/if}}
+              {{#if (eq item.data.nAtaques "Todos")}}<i class="fas fa-shield-alt tooltip" style="color:grey"><i class="fas fa-shield-alt tooltip" style="color:black"><span class="tooltiptext">Todos los Ataques del Turno.</span></i></i>{{/if}}
+            </td>
+            <td class="align_center">{{item.data.costeMagico}}</td>
+            <td class="align_right">
+              <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext tooltipderecho">Editar Escudo</span></i></a>
+              <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext tooltipderecho">Borrar Escudo</span></i></a>
+            </td>
+          </tr>
+        {{/each}}
+      </table>
+      </div>
+      </div>
+      <div div class="flexrow">
+        <div div class="cajaiznotop">
+          <table class="charsheet_cosas">
+            <tr>
+              <th></th>
+              <th><label class="attrib_name">EQUIPO</label></th>
+              <th></th>
+              <th class="align_right"><a class="item-control item-create tooltip" data-type="objeto"><i class="fas fa-plus"><span class="tooltiptext">Crear Objeto</span></i></a></th>
+            </tr>
+            {{#each Objetos as |item id|}}
+              <tr class="item" data-item-id="{{item._id}}">
+                <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+                  <div class="tooltiptext tooltipdescripcion">{{item.name}}<img src="{{item.img}}"/>{{{item.data.descripcion}}}</div>
+                </td>
+                <td>{{item.name}}</td>
+                <td></td>
+                <td class="align_right">
+                  <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext">Editar Objeto</span></i></a>
+                  <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext">Borrar Objeto</span></i></a>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+      </div>
+      <div div class="cajacentnotop">
+        <table class="charsheet_cosas">
+          <tr>
+            <th></th>
+            <th><label class="attrib_name">CONJUROS</label></th>
+            <th><label class="attrib_name">COSTE</label></th>
+            <th><label class="attrib_name">C. MIN.</label></th>
+            <th><label class="attrib_name">DIF.</label></th>
+            <th></th>
+            <th class="align_right"><a class="item-control item-create tooltip" data-type="conjuro"><i class="fas fa-plus"><span class="tooltiptext tooltipderecho">Crear Conjuro</span></i></a></th>
+          </tr>
+          {{#each Conjuros as |item id|}}
+            <tr class="item" data-item-id="{{item._id}}">
+              <td class="tooltip"><img src="{{item.img}}" width="24" height="24"/>
+                <div class="tooltiptext tooltipdescripcion">{{item.name}}<img src="{{item.img}}"/>{{{item.data.descripcion}}}</div>
+              </td>
+              <td class="tiradaConjuro clickable" data-nombreconjuro="{{name}}" data-dificultad="{{data.dificultad}}">{{item.name}}</td>
+              <td class="align_center">{{item.data.coste}}</td>
+              <td class="align_center">{{item.data.minimo}}</td>
+              <td class="align_center">{{item.data.dificultad}}</td>
+              <td></td>
+              <td class="align_right">
+                <a class="item-control item-edit tooltip"><i class="fas fa-edit"><span class="tooltiptext tooltipderecho">Editar Conjuro</span></i></a>
+                <a class="item-control item-delete tooltip"><i class="fas fa-trash"><span class="tooltiptext tooltipderecho">Borrar Conjuro</span></i></a>
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+      </div>
+      <div class="flexcol flexcenter arma_caja">
+        <label class="arma_attrib attrib_name">DESCRIPCIÓN/NOTAS</label>
+        <div class="flexcol flexcenter arma_caja cajacent">
+        {{editor content=data.descripcion target="data.descripcion" button=true owner=owner editable=true}}
+        </div>
+     </div>
+    </div>
+</form>

@@ -1,0 +1,38 @@
+<form class="{{cssClass}} bg" autocomplete="off">
+  <div class="arma_caja">
+    <header class="sheet-header arma_attrib">
+        <img class="BOLprofile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input class="attrib2" name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}"/></h1>
+    </header>
+    <div class="flexrow arma_caja">
+       <div class="flexcol flexcenter arma_attrib">
+          <label class="arma_attrib attrib_name">PROTECCIÓN</label>
+          <input class="arma_attrib attrib2" type="text" name="data.pAtaque" value="{{data.data.pAtaque}}" data-dtype="Number" maxlength="2"/>
+       </div>
+       <div class="flexcol flexcenter arma_attrib">
+          <label class="arma_attrib attrib_name">POR TURNO</label>
+          <select name="data.nAtaques" data-dtype="String  arma_attrib">
+             {{#select data.data.nAtaques}}
+                <option value="Todos">Todos</option>
+                <option value="Uno">Uno</option>
+             {{/select}}
+          </select>
+       </div>
+       <div class="flexcol flexcenter arma_attrib">
+          <label class="arma_attrib attrib_name">PEN. AGILIDAD</label>
+          <input class="arma_attrib attrib2" type="text" name="data.penalizadores" value="{{data.data.penalizadores}}" data-dtype="Number" maxlength="2"/>
+       </div>
+       <div class="flexcol flexcenter arma_attrib">
+          <label class="arma_attrib attrib_name">COSTE MÁGICO</label>
+          <input class="arma_attrib attrib2" type="text" name="data.costeMagico" value="{{data.data.costeMagico}}" data-dtype="Number" maxlength="2"/>
+       </div>
+    </div>
+    <div class="flexcol flexcenter arma_caja">
+      <label class="arma_attrib attrib_name">DESCRIPCIÓN</label>
+      <div class="flexcol flexcenter arma_caja cajacent">
+      {{editor content=data.data.descripcion target="data.descripcion" button=true owner=owner editable=true}}
+      </div>
+    </div>
+
+   </div>
+</form>

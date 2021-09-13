@@ -1,0 +1,105 @@
+{
+"Actor": {
+  "types": ["heroe", "chusma", "maton", "villano"],
+  "templates": {
+    "trasfondo": {
+      "descripción": "",
+      "origen":"",
+      "raza":"",
+      "genero":""
+    },
+    "recursos": {
+      "vitalidad": {
+        "value": 0,
+        "max": 0
+      },
+      "pHeroe": {
+        "value": 0,
+        "max": 0
+      },
+      "pArcano": {
+        "value": 0,
+        "max": 0
+      },
+      "pFe": {
+        "value": 0,
+        "max": 0
+      },
+      "pProgreso": {
+        "value": 0,
+        "max": 0
+      }
+
+    },
+    "atributos":
+    {
+      "fuerza": 0,
+      "agilidad": 0,
+      "mente": 0,
+      "atractivo": 0,
+      "iniciativa": 0,
+      "CaC": 0,
+      "distancia": 0,
+      "defensa": 0,
+      "inimod": 0
+    }
+  },
+  "heroe": {
+    "templates": ["trasfondo", "recursos", "atributos"]
+  },
+  "chusma":{
+    "templates": ["trasfondo", "recursos", "atributos"]
+  },
+  "maton":{
+    "templates": ["trasfondo", "recursos", "atributos"]
+  },
+  "villano":{
+    "templates": ["trasfondo", "recursos", "atributos"]
+  }
+},
+"Item": {
+  "types": ["arma", "armadura", "escudo", "oficio", "objeto", "ventaja", "desventaja", "conjuro"],
+  "arma": {
+    "dano": "",
+    "bono": "",
+    "incDistancia": 0,
+    "notas": "",
+    "tipo": "",
+    "descripcion": ""
+  },
+  "armadura": {
+    "proteccion": "",
+    "penalizadores": "",
+    "costeMagico": 0,
+    "descripcion": ""
+  },
+  "escudo": {
+    "pAtaque": 0,
+    "nAtaques":"",
+    "penalizadores": 0,
+    "costeMagico": 0,
+    "descripcion": ""
+  },
+  "oficio": {
+    "nivel": 0,
+    "descripcion": ""
+  },
+  "objeto": {
+    "cantidad": 0,
+    "descripcion": ""
+  },
+  "ventaja": {
+    "descripcion": ""
+  },
+  "desventaja": {
+    "descripcion": ""
+  },
+  "conjuro": {
+    "descripcion": "",
+    "requisitos": "",
+    "coste": 0,
+    "minimo": 0,
+    "dificultad": 0
+  }
+}
+}
