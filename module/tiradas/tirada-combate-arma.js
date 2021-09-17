@@ -170,8 +170,10 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
    var bonoDefensa =0;
    var textoAccion="";
    var textoAccion2="";
+   var textoAccion2_2="";
    var textoAccion3="";
    var textoAccion4="";
+   var ArmaduraVal="";
    const Defensor_Actor=canvas.tokens.get(defensor);
    let Defensa=Defensor_Actor.document._actor.data.data.defensa;
    console.log ("DATASET TIRADA ATAQUE ARMA CON ENEMIGOS");
@@ -223,6 +225,22 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
    if (Atacante_AT){
      bonoAccion+=2;
      textoAccion2="<div>Ataque Total</div>";
+   }
+   if (Atacante_AA){
+     const Armadura = Defensor_Actor.document._actor.data.items.find((i) => i.type === "armadura");
+     ArmaduraVal = getProperty(Armadura, 'data.data.proteccion') || 0;
+     if (ArmaduraVal == "D6-3"){
+       bonoAccion-=1;
+       textoAccion2_2="<div>Atravesar Armadura: -1</div>";
+     }
+     if (ArmaduraVal == "D6-2"){
+         bonoAccion-=2;
+         textoAccion2_2="<div>Atravesar Armadura: -2</div>";
+     }
+     if (ArmaduraVal == "D6-1"){
+         bonoAccion-=3;
+         textoAccion2_2="<div>Atravesar Armadura: -3</div>";
+     }
    }
    if (Defensor_ESQ){
      bonoDefensa+=1;
@@ -365,7 +383,7 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
      resultado = "<div style=\"color:grey;\">" + "FRACASO" + "</div>";
    }
 
-   flavor = "<b>" + label + textoVentajas + textoAccion + textoAccion2 + "VS<div>" + Defensor_Actor.name + "</div><div>DEF: "+ Defensa + "</div>" + textoAccion3 + textoAccion4 + resultado + "</b>";
+   flavor = "<b>" + label + textoVentajas + textoAccion + textoAccion2 + textoAccion2_2 + "VS<div>" + Defensor_Actor.name + "</div><div>DEF: "+ Defensa + "</div>" + textoAccion3 + textoAccion4 + resultado + "</b>";
 
    tiradaDados.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),
