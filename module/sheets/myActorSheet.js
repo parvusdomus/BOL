@@ -1,6 +1,7 @@
 import {tiradaAtributo} from "../tiradas/tirada-atributo.js";
 import {tiradaAtaqueDesdeAtributo} from "../tiradas/tirada-combate.js";
 import {tiradaAtaqueDesdeArma} from "../tiradas/tirada-combate-arma.js";
+import {tiradaAtaqueDesdeArmaEnemigos} from "../tiradas/tirada-combate-arma.js";
 import {tiradaDanoDesdeArma} from "../tiradas/tirada-dano-arma.js";
 import {tiradaArmadura} from "../tiradas/tirada-armadura.js";
 import {tiradaConjuro} from "../tiradas/tirada-conjuro.js";
@@ -193,11 +194,102 @@ export default class BOLActorSheet extends ActorSheet{
       console.log("TIRADA DE ATAQUE DESDE ARMA")
       const element = event.currentTarget;
       const dataset = element.dataset;
-      let dialogContent = `
-                <div class="flexcol">
-                     <div>Bonos (Profesión u otros): <input id="bonos" value="0" size=2 data-dtype="Number"></div>
-                     <div>Ventaja/Desventaja (Total): <input id="ventajas" value="0" size=2 data-dtype="Number"></div>
-              </div>`;
+      let dialogContent = "";
+      // let dialogContent = `
+                // <div class="flexcol">
+                     // <div>Bonos (Profesión u otros): <input id="bonos" value="0" size=2 data-dtype="Number"></div>
+                     // <div>Ventaja/Desventaja (Total): <input id="ventajas" value="0" size=2 data-dtype="Number"></div>
+              // </div>`;
+      let listaObjetivos = game.user.targets;
+      let token_id;
+      if (listaObjetivos.size) {
+        dialogContent = `
+                <div class="bg">
+                <table>
+                  <tr>
+                    <td>${this.actor.data.name}</td>
+                    <td><label><input type="checkbox" id="Atacante_2AO" value=false>2Armas Ofensivo</label></td>
+                    <td><label><input type="checkbox" id="Atacante_2AD" value=false>2Armas Defensivo</label></td>
+                  </tr>
+                  <tr>
+                    <td><img class="classimagedialog" src=${this.actor.data.img} data-edit="img" title=${this.actor.data.name}/></td>
+                    <td><label><input type="checkbox" id="Atacante_PD" value=false>Posición Defensiva</label></td>
+                    <td><label><input type="checkbox" id="Atacante_DT" value=false>Defensa Total</label></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td><label><input type="checkbox" id="Atacante_PO" value=false>Posición Ofensiva</label></td>
+                    <td><label><input type="checkbox" id="Atacante_AT" value=false>Ataque Total</label></td>
+                  </tr>
+                  <tr>
+                    <td>Bonos: <input id="bonos" value="0" size=2 data-dtype="Number"></td>
+                    <td>Ventaja: <input id="ventajas" value="0" size=2 data-dtype="Number"></td>
+                    <td><label><input type="checkbox" id="Atacante_AA" value=false>Atravesar Armadura</label><td>
+                  </tr>
+                </table>
+                <div><img class="classimage" src="/systems/BOL/assets/VS.png" data-edit="img" title="HEROE"/></div>
+                `;
+
+          for ( let i = 0; i < listaObjetivos.size; i++) {
+
+              token_id = Array.from(listaObjetivos)[i];
+              let target = token_id;
+              console.log ("TARGET DATA");
+              console.log (target);
+              console.log ("TARGET DATA ID");
+              console.log (target.data._id);
+              console.log ("DEFENSA");
+              console.log (target.document._actor.data.data.defensa);
+              dialogContent += `
+              <table>
+                <tr>
+                  <td>${target.data.name}</td>
+                  <td><label><input type="checkbox" id="${target.data._id}_ESQ" value=false>Usa Escudo</label></td>
+                  <td><label><input type="checkbox" id="${target.data._id}_2AD" value=false>2Armas Defensivo</label></td>
+                </tr>
+                <tr>
+                  <td><img class="classimagedialog" src=${target.data.img} data-edit="img" title=${target.data.name}/></td>
+                  <td><label><input type="checkbox" id="${target.data._id}_PD" value=false>Posición Defensiva</label></td>
+                  <td><label><input type="checkbox" id="${target.data._id}_DT" value=false>Defensa Total</label></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><label><input type="checkbox" id="${target.data._id}_PO" value=false>Posición Ofensiva</label></td>
+                  <td><label><input type="checkbox" id="${target.data._id}_AT" value=false>Ataque Total</label></td>
+                </tr>
+              </table>
+              `;
+
+          }
+          dialogContent += `</div>`;
+      } else {
+        dialogContent = `
+        <div class="bg">
+        <table>
+          <tr>
+            <td>${this.actor.data.name}</td>
+            <td><label><input type="checkbox" id="Atacante_2AO" value=true>2Armas Ofensivo</label></td>
+            <td><label><input type="checkbox" id="Atacante_2AD" value=true>2Armas Defensivo</label></td>
+          </tr>
+          <tr>
+            <td><img class="classimagedialog" src=${this.actor.data.img} data-edit="img" title=${this.actor.data.name}/></td>
+            <td><label><input type="checkbox" id="Atacante_PD" value=true>Posición Defensiva</label></td>
+            <td><label><input type="checkbox" id="Atacante_DT" value=true>Defensa Total</label></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><label><input type="checkbox" id="Atacante_PO" value=true>Posición Ofensiva</label></td>
+            <td><label><input type="checkbox" id="Atacante_AT" value=true>Ataque Total</label></td>
+          </tr>
+          <tr>
+            <td>Bonos: <input id="bonos" value="0" size=2 data-dtype="Number"></td>
+            <td>Ventaja: <input id="ventajas" value="0" size=2 data-dtype="Number"></td>
+            <td><td>
+          </tr>
+        </table>
+                </div>`;
+      }
+
       let d = new Dialog({
         title: `Nueva Tirada de Ataque con ${dataset.nombrearma} (${dataset.tipoarma})`,
         content: dialogContent,
@@ -206,7 +298,28 @@ export default class BOLActorSheet extends ActorSheet{
               icon: '<i class="fas fa-hand-rock"></i>',
               label: "Atacar",
               callback: () => {
-                 tiradaAtaqueDesdeArma (this.actor, dataset, document.getElementById("bonos").value, document.getElementById("ventajas").value);
+                if (listaObjetivos.size) {
+                  for ( let i = 0; i < listaObjetivos.size; i++) {
+                      token_id = Array.from(listaObjetivos)[i];
+                      let target = token_id;
+                      tiradaAtaqueDesdeArmaEnemigos (this.actor, dataset, document.getElementById("bonos").value, document.getElementById("ventajas").value,
+                      document.getElementById("Atacante_2AO").checked, document.getElementById("Atacante_2AD").checked,
+                      document.getElementById("Atacante_PD").checked, document.getElementById("Atacante_DT").checked,
+                      document.getElementById("Atacante_PO").checked, document.getElementById("Atacante_AT").checked,
+                      document.getElementById("Atacante_AA").checked,
+                      target.data._id,
+                      document.getElementById(target.data._id+"_ESQ").checked, document.getElementById(target.data._id+"_2AD").checked,
+                      document.getElementById(target.data._id+"_PD").checked, document.getElementById(target.data._id+"_DT").checked,
+                      document.getElementById(target.data._id+"_PO").checked, document.getElementById(target.data._id+"_AT").checked
+                    );
+               }
+             }
+             else {
+               tiradaAtaqueDesdeArma (this.actor, dataset, document.getElementById("bonos").value, document.getElementById("ventajas").value,
+               document.getElementById("Atacante_2AO").checked, document.getElementById("Atacante_2AD").checked,
+               document.getElementById("Atacante_PD").checked, document.getElementById("Atacante_DT").checked,
+               document.getElementById("Atacante_PO").checked, document.getElementById("Atacante_AT").checked);
+             }
               }
        }
            },

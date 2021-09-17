@@ -1,4 +1,4 @@
-export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas)
+export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas, Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT)
 {
    var numdados = 2;
    var resultado = "";
@@ -11,6 +11,14 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas)
    var nomValor1="";
    var nomValor2="";
    var flavor="";
+   var bonoAccion =0;
+   var textoAccion="";
+   var textoAccion2="";
+   console.log ("DATASET TIRADA ATAQUE ARMA");
+   console.log (dataset);
+   console.log ("Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT");
+   console.log (Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT)
+
    if (Number(ventajas) > 0){
      numdados += Math.abs(ventajas);
      tirada = tirada.concat (numdados, "d6kh2");
@@ -23,6 +31,30 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas)
    }
    else if (Number(ventajas) == 0){
      tirada = tirada.concat (numdados, "d6");
+   }
+   if (Atacante_2AO){
+     bonoAccion-=1;
+     textoAccion="<div>Ataca con dos armas</div>";
+   }
+   if (Atacante_2AD){
+     bonoAccion-=1;
+     textoAccion="<div>Ataca con un arma y defiende con otra</div>";
+   }
+   if (Atacante_PD){
+     bonoAccion-=1;
+     textoAccion2="<div>Posición Defensiva</div>";
+   }
+   if (Atacante_DT){
+     ui.notifications.warn("En defensa total no se pueden efectuar ataques.");
+     return 1;
+   }
+   if (Atacante_PO){
+     bonoAccion+=1;
+     textoAccion2="<div>Posición Ofensiva</div>";
+   }
+   if (Atacante_AT){
+     bonoAccion+=2;
+     textoAccion2="<div>Ataque Total</div>";
    }
    if (dataset.tipoarma == "CaC"){
      valor1=actor.data.data.CaC;
@@ -50,12 +82,20 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas)
      tirada = tirada.concat (valor2);
    }
 
+   if (Number(bonoAccion) > 0){
+     tirada = tirada.concat ("+",bonoAccion);
+   }
+   else if (Number(bonoAccion) < 0){
+     tirada = tirada.concat (bonoAccion);
+   }
+
    if (Number(bonos) > 0){
      tirada = tirada.concat ("+",bonos);
    }
    else if (Number(bonos) < 0){
      tirada = tirada.concat (bonos);
    }
+
    let tiradaDados = new Roll (tirada, actor.data.data);
    tiradaDados.roll();
    if (Number(bonos) > 0){
@@ -82,6 +122,13 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas)
    else if (Number(valor2) < 0){
      nTiradaSinBonos += Math.abs(Number(valor2));
    }
+   if (Number(bonoAccion) > 0){
+     nTiradaSinBonos -= Number(bonoAccion);
+   }
+   else if (Number(bonoAccion) < 0){
+     nTiradaSinBonos += Math.abs(Number(bonoAccion));
+   }
+
    if (nTiradaSinBonos == 2){
      resultado = "<div style=\"color:red;\">" + "FRACASO AUTOMÁTICO" + "</div>";
    } else if (nTiradaSinBonos == 12)
@@ -98,7 +145,227 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas)
      resultado = "<div style=\"color:grey;\">" + "FRACASO" + "</div>";
    }
 
-   flavor = "<b>" + label + textoVentajas + resultado + "</b>";
+   flavor = "<b>" + label + textoVentajas + textoAccion + textoAccion2 + resultado + "</b>";
+
+   tiradaDados.toMessage({
+      speaker: ChatMessage.getSpeaker({ actor: actor }),
+      flavor: flavor
+   });
+}
+
+export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT, Atacante_AA, defensor, Defensor_ESQ, Defensor_2AD, Defensor_PD, Defensor_DT, Defensor_PO, Defensor_AT)
+{
+   var numdados = 2;
+   var resultado = "";
+   var tirada = "";
+   var nTiradaSinBonos =0;
+   var label = "";
+   var textoVentajas ="";
+   var valor1=0;
+   var valor2=0;
+   var nomValor1="";
+   var nomValor2="";
+   var flavor="";
+   var bonoAccion =0;
+   var bonoDefensa =0;
+   var textoAccion="";
+   var textoAccion2="";
+   var textoAccion3="";
+   var textoAccion4="";
+   const Defensor_Actor=canvas.tokens.get(defensor);
+   let Defensa=Defensor_Actor.document._actor.data.data.defensa;
+   console.log ("DATASET TIRADA ATAQUE ARMA CON ENEMIGOS");
+   console.log (dataset);
+   console.log ("Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT, Atacante_AA");
+   console.log (Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT, Atacante_AA);
+   console.log ("DEFENSOR");
+   console.log (defensor);
+   console.log ("ACTOR DEFENSOR");
+   console.log (Defensor_Actor);
+   console.log ("DEFENSA DEL TIPO");
+   console.log (Defensa);
+   console.log ("Defensor_ESQ, Defensor_2AD, Defensor_PD, Defensor_DT, Defensor_PO, Defensor_AT");
+   console.log (Defensor_ESQ, Defensor_2AD, Defensor_PD, Defensor_DT, Defensor_PO, Defensor_AT);
+
+   if (Number(ventajas) > 0){
+     numdados += Math.abs(ventajas);
+     tirada = tirada.concat (numdados, "d6kh2");
+     textoVentajas="<div style=\"color:green;\">" + "CON " + ventajas + " VENTAJAS" + "</div>";
+   }
+   else if (Number(ventajas) < 0){
+     numdados += Math.abs(ventajas);
+     tirada = tirada.concat (numdados, "d6kl2");
+     textoVentajas="<div style=\"color:red;\">" + "CON " + Math.abs(ventajas) + " DESVENTAJAS" + "</div>";
+   }
+   else if (Number(ventajas) == 0){
+     tirada = tirada.concat (numdados, "d6");
+   }
+   if (Atacante_2AO){
+     bonoAccion-=1;
+     textoAccion="<div>Ataca con dos armas</div>";
+   }
+   if (Atacante_2AD){
+     bonoAccion-=1;
+     textoAccion="<div>Ataca con un arma y defiende con otra</div>";
+   }
+   if (Atacante_PD){
+     bonoAccion-=1;
+     textoAccion2="<div>Posición Defensiva</div>";
+   }
+   if (Atacante_DT){
+     ui.notifications.warn("En defensa total no se pueden efectuar ataques.");
+     return 1;
+   }
+   if (Atacante_PO){
+     bonoAccion+=1;
+     textoAccion2="<div>Posición Ofensiva</div>";
+   }
+   if (Atacante_AT){
+     bonoAccion+=2;
+     textoAccion2="<div>Ataque Total</div>";
+   }
+   if (Defensor_ESQ){
+     bonoDefensa+=1;
+     textoAccion3="<div>Defensor: Se Protege con un Escudo</div>";
+   }
+   if (Defensor_2AD){
+     bonoDefensa+=1;
+     textoAccion3="<div>Defensor: Ataca con un arma y defiende con otra</div>";
+   }
+   if (Defensor_PD){
+     bonoDefensa+=1;
+     textoAccion4="<div>Defensor: Posición Defensiva</div>";
+   }
+   if (Defensor_DT){
+     bonoDefensa+=2;
+     textoAccion4="<div>Defensor: Defensa Total</div>";
+   }
+   if (Defensor_PO){
+     bonoDefensa-=1;
+     textoAccion4="<div>Defensor: Posición Ofensiva</div>";
+   }
+   if (Defensor_AT){
+     bonoDefensa-=2;
+     textoAccion4="<div>Defensor: Ataque Total</div>";
+   }
+
+   if (dataset.tipoarma == "CaC"){
+     valor1=actor.data.data.CaC;
+     valor2=actor.data.data.fuerza;
+     nomValor1="CaC";
+     nomValor2="Fuerza";
+   }
+   else if (dataset.tipoarma == "Dist")
+   {
+     valor1=actor.data.data.distancia;
+     valor2=actor.data.data.agilidad;
+     nomValor1="Dist";
+     nomValor2="Agilidad";
+   }
+   if (Number (valor1) > 0){
+     tirada = tirada.concat ("+", valor1);
+   }
+   else if (Number (valor1) < 0){
+     tirada = tirada.concat (valor1);
+   }
+   if (Number (valor2) > 0){
+     tirada = tirada.concat ("+", valor2);
+   }
+   else if (Number (valor2) < 0){
+     tirada = tirada.concat (valor2);
+   }
+
+   if (Number(bonoAccion) > 0){
+     tirada = tirada.concat ("+",bonoAccion);
+   }
+   else if (Number(bonoAccion) < 0){
+     tirada = tirada.concat (bonoAccion);
+   }
+
+   if (Number(Defensa) > 0){
+     tirada = tirada.concat ("-",Defensa);
+   }
+   else if (Number(Defensa) < 0){
+     tirada = tirada.concat ("+",Math.abs(Number(Defensa)));
+   }
+
+   if (Number(bonoDefensa) > 0){
+     tirada = tirada.concat ("-",bonoDefensa);
+   }
+   else if (Number(bonoDefensa) < 0){
+     tirada = tirada.concat ("+",Math.abs(Number(bonoDefensa)));
+   }
+
+   if (Number(bonos) > 0){
+     tirada = tirada.concat ("+",bonos);
+   }
+   else if (Number(bonos) < 0){
+     tirada = tirada.concat (bonos);
+   }
+
+   let tiradaDados = new Roll (tirada, actor.data.data);
+   tiradaDados.roll();
+   if (Number(bonos) > 0){
+     nTiradaSinBonos = Number(tiradaDados.total) - Number(bonos);
+     label = dataset.nombrearma ? `ATACANDO CON ${dataset.nombrearma}:  <br>${nomValor1}(${valor1}) + ${nomValor2} (${valor2}) + ${bonos}` : '';
+   }
+   else if (Number(bonos) < 0){
+     nTiradaSinBonos = Number(tiradaDados.total) + Math.abs(Number(bonos));
+     label = dataset.nombrearma ? `ATACANDO CON ${dataset.nombrearma}:  <br>${nomValor1}(${valor1}) + ${nomValor2} (${valor2}) ${bonos}` : '';
+   }
+   else if (Number(bonos) == 0){
+     nTiradaSinBonos = Number(tiradaDados.total);
+     label = dataset.nombrearma ? `ATACANDO CON ${dataset.nombrearma}:  <br>${nomValor1}(${valor1}) + ${nomValor2} (${valor2})` : '';
+   }
+   if (Number(valor1) > 0){
+     nTiradaSinBonos -= Number(valor1);
+   }
+   else if (Number(valor1) < 0){
+     nTiradaSinBonos += Math.abs(Number(valor1));
+   }
+   if (Number(valor2) > 0){
+     nTiradaSinBonos -= Number(valor2);
+   }
+   else if (Number(valor2) < 0){
+     nTiradaSinBonos += Math.abs(Number(valor2));
+   }
+   if (Number(bonoAccion) > 0){
+     nTiradaSinBonos -= Number(bonoAccion);
+   }
+   else if (Number(bonoAccion) < 0){
+     nTiradaSinBonos += Math.abs(Number(bonoAccion));
+   }
+
+   if (Number(bonoDefensa) > 0){
+     nTiradaSinBonos += Number(bonoDefensa);
+   }
+   else if (Number(bonoDefensa) < 0){
+     nTiradaSinBonos -= Math.abs(Number(bonoDefensa));
+   }
+   if (Number(Defensa) > 0){
+     nTiradaSinBonos += Number(Defensa);
+   }
+   else if (Number(Defensa) < 0){
+     nTiradaSinBonos -= Math.abs(Number(Defensa));
+   }
+
+   if (nTiradaSinBonos == 2){
+     resultado = "<div style=\"color:red;\">" + "FRACASO AUTOMÁTICO" + "</div>";
+   } else if (nTiradaSinBonos == 12)
+   {
+     resultado = "<div style=\"color:green;\">" + "ÉXITO AUTOMÁTICO" + "</div>";
+     if (tiradaDados.total >= 9){
+       resultado = "<div style=\"color:green;\">" + "ÉXITO ASOMBROSO" + "</div>";
+     }
+   } else if (tiradaDados.total >= 9)
+   {
+     resultado = "<div style=\"color:blue;\">" + "ÉXITO" + "</div>";
+   } else
+   {
+     resultado = "<div style=\"color:grey;\">" + "FRACASO" + "</div>";
+   }
+
+   flavor = "<b>" + label + textoVentajas + textoAccion + textoAccion2 + "VS<div>" + Defensor_Actor.name + "</div><div>DEF: "+ Defensa + "</div>" + textoAccion3 + textoAccion4 + resultado + "</b>";
 
    tiradaDados.toMessage({
       speaker: ChatMessage.getSpeaker({ actor: actor }),

@@ -32,6 +32,18 @@
   border: none;
 }
 
+.classimagedialog {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50px;
+  flex: 0 0 50px;
+  height: 50px;
+  width: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
 .classlogo {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
