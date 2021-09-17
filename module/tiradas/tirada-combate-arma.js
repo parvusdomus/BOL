@@ -227,7 +227,9 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
      textoAccion2="<div>Ataque Total</div>";
    }
    if (Atacante_AA){
-     const Armadura = Defensor_Actor.document._actor.data.items.find((i) => i.type === "armadura");
+     console.log ("OBJETOS");
+     console.log (Defensor_Actor.document._actor.data.items)
+     const Armadura = Defensor_Actor.document._actor.data.items.find((i) => i.type === "armadura"  && i.data.data.proteccion != 1);
      ArmaduraVal = getProperty(Armadura, 'data.data.proteccion') || 0;
      if (ArmaduraVal == "D6-3"){
        bonoAccion-=1;

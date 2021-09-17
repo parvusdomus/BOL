@@ -71,7 +71,8 @@
     "proteccion": "",
     "penalizadores": "",
     "costeMagico": 0,
-    "descripcion": ""
+    "descripcion": "",
+    "esCasco": false
   },
   "escudo": {
     "pAtaque": 0,
