@@ -137,7 +137,6 @@ export default class BOLActorSheet extends ActorSheet{
     }
 
     _onTiradaAtributo(event) {
-      console.log("TIRADA DE ATRIBUTO")
       const element = event.currentTarget;
       const dataset = element.dataset;
       let dialogContent = `
@@ -164,7 +163,6 @@ export default class BOLActorSheet extends ActorSheet{
     }
 
     _onTiradaAtaqueAtributo(event) {
-      console.log("TIRADA DE ATAQUE DESDE ATRIBUTO")
       const element = event.currentTarget;
       const dataset = element.dataset;
       let dialogContent = `
@@ -192,7 +190,6 @@ export default class BOLActorSheet extends ActorSheet{
     }
 
     _onTiradaAtaqueArma(event) {
-      console.log("TIRADA DE ATAQUE DESDE ARMA")
       const element = event.currentTarget;
       const dataset = element.dataset;
       let dialogContent = "";
@@ -230,12 +227,6 @@ export default class BOLActorSheet extends ActorSheet{
 
               token_id = Array.from(listaObjetivos)[i];
               let target = token_id;
-              console.log ("TARGET DATA");
-              console.log (target);
-              console.log ("TARGET DATA ID");
-              console.log (target.data._id);
-              console.log ("DEFENSA");
-              console.log (target.document._actor.data.data.defensa);
               dialogContent += `
               <table>
                 <tr>
@@ -326,7 +317,6 @@ export default class BOLActorSheet extends ActorSheet{
 
     }
     _onTiradaDanoArma(event) {
-      console.log("TIRADA DE DAÑO DESDE ARMA")
       const element = event.currentTarget;
       const dataset = element.dataset;
       let listaObjetivos = game.user.targets;
@@ -347,9 +337,8 @@ export default class BOLActorSheet extends ActorSheet{
                     <td><label><input type="checkbox" id="Atacante_AC" value=false>Asesino de Chusma</label></td>
                   </tr>
                   <tr>
-                    <td>Bonos: <input id="bonos" value="0" size=2 data-dtype="Number"></td>
-                    <td>Ventaja: <input id="ventajas" value="0" size=2 data-dtype="Number"></td>
                     <td><td>
+                    <td>Bonos: <input id="bonos" value="0" size=2 data-dtype="Number"></td>
                   </tr>
                 </table>
                 <div><img class="classimage" src="/systems/BOL/assets/DAM.png" data-edit="img" title="DAÑO"/></div>
@@ -358,12 +347,6 @@ export default class BOLActorSheet extends ActorSheet{
 
                     token_id = Array.from(listaObjetivos)[i];
                     let target = token_id;
-                    console.log ("TARGET DATA");
-                    console.log (target);
-                    console.log ("TARGET DATA ID");
-                    console.log (target.data._id);
-                    console.log ("DEFENSA");
-                    console.log (target.document._actor.data.data.defensa);
                     let armadura_equipada_defensor_nombre ="";
                     let armadura_equipada_defensor = target.document._actor.data.items.find((i) => i.type === "armadura"  && i.data.data.proteccion != 1);
                     if (armadura_equipada_defensor)
@@ -398,20 +381,14 @@ export default class BOLActorSheet extends ActorSheet{
           <tr>
             <td>${this.actor.data.name}</td>
             <td><label><input type="checkbox" id="Atacante_2AO" value=false>2Armas Ofensivo</label></td>
-            <td><td>
+            <td><label><input type="checkbox" id="Atacante_GP" value=false>Golpe Poderoso</label></td>
           </tr>
           <tr>
             <td><img class="classimagedialog" src=${this.actor.data.img} data-edit="img" title=${this.actor.data.name}/></td>
-            <td><label><input type="checkbox" id="Atacante_GP" value=false>Golpe Poderoso</label></td>
             <td><label><input type="checkbox" id="Atacante_AC" value=false>Asesino de Chusma</label></td>
-          </tr>
-          <tr>
             <td>Bonos: <input id="bonos" value="0" size=2 data-dtype="Number"></td>
-            <td>Ventaja: <input id="ventajas" value="0" size=2 data-dtype="Number"></td>
-            <td><td>
           </tr>
         </table>
-        <div><img class="classimage" src="/systems/BOL/assets/VS.png" data-edit="img" title="HEROE"/></div>
                 </div>`;
       }
 
@@ -448,7 +425,6 @@ export default class BOLActorSheet extends ActorSheet{
 
     }
     _onTiradaConjuro(event) {
-      console.log("TIRADA DE CONJURO")
       const element = event.currentTarget;
       const dataset = element.dataset;
       let dialogContent = `
@@ -475,7 +451,6 @@ export default class BOLActorSheet extends ActorSheet{
     }
 
     _onTiradaArmadura(event) {
-      console.log("TIRADA DE ARMADURA")
       const element = event.currentTarget;
       const dataset = element.dataset;
       let dialogContent = `
