@@ -223,7 +223,7 @@ export default class BOLActorSheet extends ActorSheet{
                     <td><label><input type="checkbox" id="Atacante_AA" value=false>Atravesar Armadura</label><td>
                   </tr>
                 </table>
-                <div><img class="classimage" src="/systems/BOL/assets/VS.png" data-edit="img" title="HEROE"/></div>
+                <div><img class="classimage" src="/systems/BOL/assets/VS.png" data-edit="img" title="VS"/></div>
                 `;
 
           for ( let i = 0; i < listaObjetivos.size; i++) {
@@ -352,7 +352,7 @@ export default class BOLActorSheet extends ActorSheet{
                     <td><td>
                   </tr>
                 </table>
-                <div><img class="classimage" src="/systems/BOL/assets/VS.png" data-edit="img" title="HEROE"/></div>
+                <div><img class="classimage" src="/systems/BOL/assets/DAM.png" data-edit="img" title="DAÑO"/></div>
                 `;
                 for ( let i = 0; i < listaObjetivos.size; i++) {
 
