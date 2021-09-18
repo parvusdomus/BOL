@@ -14,10 +14,6 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas, Atacante
    var bonoAccion =0;
    var textoAccion="";
    var textoAccion2="";
-   console.log ("DATASET TIRADA ATAQUE ARMA");
-   console.log (dataset);
-   console.log ("Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT");
-   console.log (Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT)
 
    if (Number(ventajas) > 0){
      numdados += Math.abs(ventajas);
@@ -176,18 +172,6 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
    var ArmaduraVal="";
    const Defensor_Actor=canvas.tokens.get(defensor);
    let Defensa=Defensor_Actor.document._actor.data.data.defensa;
-   console.log ("DATASET TIRADA ATAQUE ARMA CON ENEMIGOS");
-   console.log (dataset);
-   console.log ("Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT, Atacante_AA");
-   console.log (Atacante_2AO, Atacante_2AD, Atacante_PD, Atacante_DT, Atacante_PO, Atacante_AT, Atacante_AA);
-   console.log ("DEFENSOR");
-   console.log (defensor);
-   console.log ("ACTOR DEFENSOR");
-   console.log (Defensor_Actor);
-   console.log ("DEFENSA DEL TIPO");
-   console.log (Defensa);
-   console.log ("Defensor_ESQ, Defensor_2AD, Defensor_PD, Defensor_DT, Defensor_PO, Defensor_AT");
-   console.log (Defensor_ESQ, Defensor_2AD, Defensor_PD, Defensor_DT, Defensor_PO, Defensor_AT);
 
    if (Number(ventajas) > 0){
      numdados += Math.abs(ventajas);
@@ -227,8 +211,6 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
      textoAccion2="<div>Ataque Total</div>";
    }
    if (Atacante_AA){
-     console.log ("OBJETOS");
-     console.log (Defensor_Actor.document._actor.data.items)
      const Armadura = Defensor_Actor.document._actor.data.items.find((i) => i.type === "armadura"  && i.data.data.proteccion != 1);
      ArmaduraVal = getProperty(Armadura, 'data.data.proteccion') || 0;
      if (ArmaduraVal == "D6-3"){
