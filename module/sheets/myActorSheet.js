@@ -3,6 +3,7 @@ import {tiradaAtaqueDesdeAtributo} from "../tiradas/tirada-combate.js";
 import {tiradaAtaqueDesdeArma} from "../tiradas/tirada-combate-arma.js";
 import {tiradaAtaqueDesdeArmaEnemigos} from "../tiradas/tirada-combate-arma.js";
 import {tiradaDanoDesdeArma} from "../tiradas/tirada-dano-arma.js";
+import {tiradaDanoDesdeArmaEnemigos} from "../tiradas/tirada-dano-arma.js";
 import {tiradaArmadura} from "../tiradas/tirada-armadura.js";
 import {tiradaConjuro} from "../tiradas/tirada-conjuro.js";
 
@@ -195,11 +196,6 @@ export default class BOLActorSheet extends ActorSheet{
       const element = event.currentTarget;
       const dataset = element.dataset;
       let dialogContent = "";
-      // let dialogContent = `
-                // <div class="flexcol">
-                     // <div>Bonos (Profesión u otros): <input id="bonos" value="0" size=2 data-dtype="Number"></div>
-                     // <div>Ventaja/Desventaja (Total): <input id="ventajas" value="0" size=2 data-dtype="Number"></div>
-              // </div>`;
       let listaObjetivos = game.user.targets;
       let token_id;
       if (listaObjetivos.size) {
@@ -333,10 +329,92 @@ export default class BOLActorSheet extends ActorSheet{
       console.log("TIRADA DE DAÑO DESDE ARMA")
       const element = event.currentTarget;
       const dataset = element.dataset;
-      let dialogContent = `
-                <div class="flexcol">
-                     <div>Bonos (Profesión u otros): <input id="bonos" value="0" size=2 data-dtype="Number"></div>
-              </div>`;
+      let listaObjetivos = game.user.targets;
+      let token_id;
+      var dialogContent = ``
+      if (listaObjetivos.size) {
+        dialogContent = `
+                <div class="bg">
+                <table>
+                  <tr>
+                    <td>${this.actor.data.name}</td>
+                    <td><label><input type="checkbox" id="Atacante_2AO" value=false>2Armas Ofensivo</label></td>
+                    <td><label><input type="checkbox" id="Atacante_AA" value=false>Atravesar Armadura</label><td>
+                  </tr>
+                  <tr>
+                    <td><img class="classimagedialog" src=${this.actor.data.img} data-edit="img" title=${this.actor.data.name}/></td>
+                    <td><label><input type="checkbox" id="Atacante_GP" value=false>Golpe Poderoso</label></td>
+                    <td><label><input type="checkbox" id="Atacante_AC" value=false>Asesino de Chusma</label></td>
+                  </tr>
+                  <tr>
+                    <td>Bonos: <input id="bonos" value="0" size=2 data-dtype="Number"></td>
+                    <td>Ventaja: <input id="ventajas" value="0" size=2 data-dtype="Number"></td>
+                    <td><td>
+                  </tr>
+                </table>
+                <div><img class="classimage" src="/systems/BOL/assets/VS.png" data-edit="img" title="HEROE"/></div>
+                `;
+                for ( let i = 0; i < listaObjetivos.size; i++) {
+
+                    token_id = Array.from(listaObjetivos)[i];
+                    let target = token_id;
+                    console.log ("TARGET DATA");
+                    console.log (target);
+                    console.log ("TARGET DATA ID");
+                    console.log (target.data._id);
+                    console.log ("DEFENSA");
+                    console.log (target.document._actor.data.data.defensa);
+                    let armadura_equipada_defensor_nombre ="";
+                    let armadura_equipada_defensor = target.document._actor.data.items.find((i) => i.type === "armadura"  && i.data.data.proteccion != 1);
+                    if (armadura_equipada_defensor)
+                    {
+                      armadura_equipada_defensor_nombre = armadura_equipada_defensor.name;
+                    }
+                    armadura_equipada_defensor = target.document._actor.data.items.find((i) => i.type === "armadura"  && i.data.data.proteccion == 1);
+                    if (armadura_equipada_defensor){
+                      if (armadura_equipada_defensor_nombre){
+                        armadura_equipada_defensor_nombre+= ", "
+                      }
+                      armadura_equipada_defensor_nombre+= armadura_equipada_defensor.name;
+                    }
+                    dialogContent += `
+                    <table>
+                      <tr>
+                        <td>${target.data.name}</td>
+                        <td><img class="classimagedialog" src=${target.data.img} data-edit="img" title=${target.data.name}/></td>
+                        <td><label>${armadura_equipada_defensor_nombre}</label></td>
+                      </tr>
+                    </table>
+                    `;
+
+                }
+                dialogContent += `</div>`;
+
+      }
+      else {
+        dialogContent = `
+        <div class="bg">
+        <table>
+          <tr>
+            <td>${this.actor.data.name}</td>
+            <td><label><input type="checkbox" id="Atacante_2AO" value=false>2Armas Ofensivo</label></td>
+            <td><td>
+          </tr>
+          <tr>
+            <td><img class="classimagedialog" src=${this.actor.data.img} data-edit="img" title=${this.actor.data.name}/></td>
+            <td><label><input type="checkbox" id="Atacante_GP" value=false>Golpe Poderoso</label></td>
+            <td><label><input type="checkbox" id="Atacante_AC" value=false>Asesino de Chusma</label></td>
+          </tr>
+          <tr>
+            <td>Bonos: <input id="bonos" value="0" size=2 data-dtype="Number"></td>
+            <td>Ventaja: <input id="ventajas" value="0" size=2 data-dtype="Number"></td>
+            <td><td>
+          </tr>
+        </table>
+        <div><img class="classimage" src="/systems/BOL/assets/VS.png" data-edit="img" title="HEROE"/></div>
+                </div>`;
+      }
+
       let d = new Dialog({
         title: `Nueva Tirada de Daño con ${dataset.nombrearma}`,
         content: dialogContent,
@@ -345,7 +423,21 @@ export default class BOLActorSheet extends ActorSheet{
               icon: '<i class="fas fa-heartbeat"></i>',
               label: "Dañar",
               callback: () => {
-                 tiradaDanoDesdeArma (this.actor, dataset, document.getElementById("bonos").value);
+                if (listaObjetivos.size) {
+                  for ( let i = 0; i < listaObjetivos.size; i++) {
+                      token_id = Array.from(listaObjetivos)[i];
+                      let target = token_id;
+                      tiradaDanoDesdeArmaEnemigos (this.actor, dataset, document.getElementById("bonos").value,
+                      document.getElementById("Atacante_2AO").checked, document.getElementById("Atacante_GP").checked,
+                      document.getElementById("Atacante_AC").checked, document.getElementById("Atacante_AA").checked,
+                      target.data._id
+                    );
+               }
+             }
+             else {
+            tiradaDanoDesdeArma (this.actor, dataset, document.getElementById("bonos").value,
+             document.getElementById("Atacante_2AO").checked, document.getElementById("Atacante_GP").checked, document.getElementById("Atacante_AC").checked);
+             }
               }
        }
            },
