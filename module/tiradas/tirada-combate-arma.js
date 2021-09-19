@@ -30,15 +30,15 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas, Atacante
    }
    if (Atacante_2AO){
      bonoAccion-=1;
-     textoAccion="<div>Ataca con dos armas</div>";
+     textoAccion="<i class=\"fas fa-hands tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Ataque con dos Armas</span></i>";
    }
    if (Atacante_2AD){
      bonoAccion-=1;
-     textoAccion="<div>Ataca con un arma y defiende con otra</div>";
+     textoAccion="<i class=\"fas fa-hands tooltip\" style=\"color:blue\"><span class=\"tooltiptext\">Ataque con un Arma y Defiende con otra</span></i>";
    }
    if (Atacante_PD){
      bonoAccion-=1;
-     textoAccion2="<div>Posición Defensiva</div>";
+     textoAccion2="<i class=\"fas fa-shield tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Posición Defensiva</span></i>";
    }
    if (Atacante_DT){
      ui.notifications.warn("En defensa total no se pueden efectuar ataques.");
@@ -46,11 +46,11 @@ export function tiradaAtaqueDesdeArma (actor, dataset, bonos, ventajas, Atacante
    }
    if (Atacante_PO){
      bonoAccion+=1;
-     textoAccion2="<div>Posición Ofensiva</div>";
+     textoAccion2="<i class=\"fas fa-fist-raised tooltip\" style=\"color:grey\"><span class=\"tooltiptext\">Posición Ofensiva</span></i>";
    }
    if (Atacante_AT){
      bonoAccion+=2;
-     textoAccion2="<div>Ataque Total</div>";
+     textoAccion2="<i class=\"fas fa-fist-raised tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Ataque Total</span></i><i class=\"fas fa-fist-raised tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Ataque Total</span></i>";
    }
    if (dataset.tipoarma == "CaC"){
      valor1=actor.data.data.CaC;
@@ -188,15 +188,15 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
    }
    if (Atacante_2AO){
      bonoAccion-=1;
-     textoAccion="<div>Ataca con dos armas</div>";
+     textoAccion="<i class=\"fas fa-hands tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Ataque con dos Armas</span></i>";
    }
    if (Atacante_2AD){
      bonoAccion-=1;
-     textoAccion="<div>Ataca con un arma y defiende con otra</div>";
+     textoAccion="<i class=\"fas fa-hands tooltip\" style=\"color:blue\"><span class=\"tooltiptext\">Ataque con un Arma y Defiende con otra</span></i>";
    }
    if (Atacante_PD){
      bonoAccion-=1;
-     textoAccion2="<div>Posición Defensiva</div>";
+     textoAccion2="<i class=\"fas fa-shield tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Posición Defensiva</span></i>";
    }
    if (Atacante_DT){
      ui.notifications.warn("En defensa total no se pueden efectuar ataques.");
@@ -204,51 +204,51 @@ export function tiradaAtaqueDesdeArmaEnemigos (actor, dataset, bonos, ventajas, 
    }
    if (Atacante_PO){
      bonoAccion+=1;
-     textoAccion2="<div>Posición Ofensiva</div>";
+     textoAccion2="<i class=\"fas fa-fist-raised tooltip\" style=\"color:grey\"><span class=\"tooltiptext\">Posición Ofensiva</span></i>";
    }
    if (Atacante_AT){
      bonoAccion+=2;
-     textoAccion2="<div>Ataque Total</div>";
+     textoAccion2="<i class=\"fas fa-fist-raised tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Ataque Total</span></i><i class=\"fas fa-fist-raised tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Ataque Total</span></i>";
    }
    if (Atacante_AA){
      const Armadura = Defensor_Actor.document._actor.data.items.find((i) => i.type === "armadura"  && i.data.data.proteccion != 1);
      ArmaduraVal = getProperty(Armadura, 'data.data.proteccion') || 0;
      if (ArmaduraVal == "D6-3"){
        bonoAccion-=1;
-       textoAccion2_2="<div>Atravesar Armadura: -1</div>";
+       textoAccion2_2="<i class=\"fas fa-sun tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Atravesar Armadura: -1</span></i>";
      }
      if (ArmaduraVal == "D6-2"){
          bonoAccion-=2;
-         textoAccion2_2="<div>Atravesar Armadura: -2</div>";
+         textoAccion2_2="<i class=\"fas fa-sun tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Atravesar Armadura: -2</span></i>";
      }
      if (ArmaduraVal == "D6-1"){
          bonoAccion-=3;
-         textoAccion2_2="<div>Atravesar Armadura: -3</div>";
+         textoAccion2_2="<i class=\"fas fa-sun tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Atravesar Armadura: -3</span></i>";
      }
    }
    if (Defensor_ESQ){
      bonoDefensa+=1;
-     textoAccion3="<div>Defensor: Se Protege con un Escudo</div>";
+     textoAccion3="<i class=\"fas fa-shield tooltip\" style=\"color:green\"><span class=\"tooltiptext\">Se Protege con un Escudo</span></i>";
    }
    if (Defensor_2AD){
      bonoDefensa+=1;
-     textoAccion3="<div>Defensor: Ataca con un arma y defiende con otra</div>";
+     textoAccion3="<i class=\"fas fa-hands tooltip\" style=\"color:blue\"><span class=\"tooltiptext\">Ataque con un Arma y Defiende con otra</span></i>";
    }
    if (Defensor_PD){
      bonoDefensa+=1;
-     textoAccion4="<div>Defensor: Posición Defensiva</div>";
+     textoAccion4="<i class=\"fas fa-shield tooltip\" style=\"color:grey\"><span class=\"tooltiptext\">Posición Defensiva</span></i>";
    }
    if (Defensor_DT){
      bonoDefensa+=2;
-     textoAccion4="<div>Defensor: Defensa Total</div>";
+     textoAccion4="<i class=\"fas fa-shield tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Defensa Total</span></i><i class=\"fas fa-shield tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Defensa Total</span></i>";
    }
    if (Defensor_PO){
      bonoDefensa-=1;
-     textoAccion4="<div>Defensor: Posición Ofensiva</div>";
+     textoAccion4="<i class=\"fas fa-fist-raised tooltip\" style=\"color:grey\"><span class=\"tooltiptext\">Posición Ofensiva</span></i>";
    }
    if (Defensor_AT){
      bonoDefensa-=2;
-     textoAccion4="<div>Defensor: Ataque Total</div>";
+     textoAccion4="<i class=\"fas fa-fist-raised tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Ataque Total</span></i><i class=\"fas fa-fist-raised tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Ataque Total</span></i>";
    }
 
    if (dataset.tipoarma == "CaC"){

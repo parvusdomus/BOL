@@ -18,12 +18,12 @@ export function tiradaDanoDesdeArma (actor, dataset, bonos, Atacante_2AO, Atacan
        ui.notifications.warn("El ataque con dos armas sólo se puede usar con armas ligeras y medias.");
      }
      else if (dataset.danoarma == "1D6B"){
-       opcion1 ="<div>Ataque con dos armas</div>"
+       opcion1 ="<i class=\"fas fa-hands tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Ataque con dos Armas</span></i>"
        tirada = tirada.concat ("1d6");
        danoFinalArma ="1D6B -> 1D6";
      }
      else if (dataset.danoarma == "1D6"){
-       opcion1 ="<div>Ataque con dos armas</div>"
+       opcion1 ="<i class=\"fas fa-hands tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Ataque con dos Armas</span></i>"
        tirada = tirada.concat ("2d6kh");
        danoFinalArma ="1D6 -> 1D6A"
      }
@@ -69,11 +69,11 @@ export function tiradaDanoDesdeArma (actor, dataset, bonos, Atacante_2AO, Atacan
    }
    if (Atacante_GP){
      bonoTotal += 6;
-     opcion2 ="<div>Corte violento / Golpe aplastante</div>"
+     opcion2 ="<i class=\"fas fa-skull tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Corte Violento / Golpe Aplastante</span></i>"
    }
 
    if (Atacante_AC){
-     opcion3 ="<div>Asesino de chusma</div>"
+     opcion3 ="<i class=\"fas fa-users-slash tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Asesino de Chusma</span></i>"
    }
 
    if (Number(bonoTotal) > 0){
@@ -129,12 +129,12 @@ export function tiradaDanoDesdeArmaEnemigos (actor, dataset, bonos, Atacante_2AO
        ui.notifications.warn("El ataque con dos armas sólo se puede usar con armas ligeras y medias.");
      }
      else if (dataset.danoarma == "1D6B"){
-       opcion1 ="<div>Ataque con dos armas</div>"
+       opcion1 ="<i class=\"fas fa-sign-language tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Ataque con dos Armas</span></i>"
        tirada = tirada.concat ("1d6");
        danoFinalArma ="1D6B -> 1D6";
      }
      else if (dataset.danoarma == "1D6"){
-       opcion1 ="<div>Ataque con dos armas</div>"
+       opcion1 ="<i class=\"fas fa-sign-language tooltip\" style=\"color:red\"><span class=\"tooltiptext\">Ataque con dos Armas</span></i>"
        tirada = tirada.concat ("2d6kh");
        danoFinalArma ="1D6 -> 1D6A"
      }
@@ -188,11 +188,11 @@ export function tiradaDanoDesdeArmaEnemigos (actor, dataset, bonos, Atacante_2AO
    }
    if (Atacante_GP){
      bonoTotal += 6;
-     opcion2 ="<div>Corte violento / Golpe aplastante</div>";
+     opcion2 ="<i class=\"fas fa-skull tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Corte Violento / Golpe Aplastante</span></i>";
    }
 
    if (Atacante_AC){
-     opcion3 ="<div>Asesino de chusma</div>";
+     opcion3 ="<i class=\"fas fa-users-slash tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Asesino de Chusma</span></i>";
    }
 
    if (Number(bonoTotal) > 0){
@@ -203,7 +203,7 @@ export function tiradaDanoDesdeArmaEnemigos (actor, dataset, bonos, Atacante_2AO
    }
 
    if (Atacante_AA){
-     opcion4="<div>Atravesar Armadura</div>";
+     opcion4="<i class=\"fas fa-sun tooltip\" style=\"color:black\"><span class=\"tooltiptext\">Atravesar Armadura</span></i>";
    }
    else {
      if (armadura_equipada_defensor){
