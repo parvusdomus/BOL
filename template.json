@@ -42,19 +42,29 @@
       "distancia": 0,
       "defensa": 0,
       "inimod": 0
+    },
+    "opcionesDeCombate":
+    {
+      "2AO": false,
+      "2AD": false,
+      "PD": false,
+      "PO": false,
+      "DT": false,
+      "AT": false,
+      "AA": false
     }
   },
   "heroe": {
-    "templates": ["trasfondo", "recursos", "atributos"]
+    "templates": ["trasfondo", "recursos", "atributos","opcionesDeCombate"]
   },
   "chusma":{
-    "templates": ["trasfondo", "recursos", "atributos"]
+    "templates": ["trasfondo", "recursos", "atributos","opcionesDeCombate"]
   },
   "maton":{
-    "templates": ["trasfondo", "recursos", "atributos"]
+    "templates": ["trasfondo", "recursos", "atributos","opcionesDeCombate"]
   },
   "villano":{
-    "templates": ["trasfondo", "recursos", "atributos"]
+    "templates": ["trasfondo", "recursos", "atributos","opcionesDeCombate"]
   }
 },
 "Item": {
